@@ -130,9 +130,11 @@ tabsHeight = 40px
     position relative
 
   .auth0-lock-cred-pane
-    height 100%
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
     border-radius 6px
-    background white
     position relative
 
     &.horizontal-fade-exit
@@ -158,6 +160,14 @@ tabsHeight = 40px
     overflow hidden
     -webkit-box-sizing border-box
     box-sizing border-box
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  .auth0-lock-header-container
+    flex: 1;
+    flex-shrink: 0;
+    overflow: scroll;
 
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
@@ -293,7 +303,6 @@ tabsHeight = 40px
 
 
   .auth0-lock-content
-    padding 20px
     -webkit-box-sizing border-box
     -moz-box-sizing border-box
     box-sizing border-box
@@ -611,6 +620,11 @@ tabsHeight = 40px
       opacity 1
       transition-duration .5s
 
+  .auth0-lock-submit-container
+    flex: 1;
+    flex-shrink: 0;
+    overflow: scroll;
+  
   .auth0-loading-container
     position relative
     display none
@@ -965,8 +979,6 @@ tabsHeight = 40px
       //mobile view
       @media screen and (max-width: 480px)
         background white
-        min-height "calc(100vh - %s)" % (headerHeight + submitHeight)
-        // min-height 375px
         display table
         width 100%
 
@@ -974,22 +986,11 @@ tabsHeight = 40px
       //mobile view
       @media screen and (max-width: 480px)
         width 100%
-        display table-cell
         vertical-align middle
 
       .auth0-lock-form p
         @media screen and (max-width: 480px)
           font-size 14px
-
-    .auth0-lock-tabs-container
-      //mobile view
-      @media screen and (max-width: 480px)
-        position absolute
-        top 0
-        left 0
-        width 100%
-        margin 0
-
 
     .auth0-lock-terms
       @media screen and (max-width: 480px)
@@ -1020,24 +1021,6 @@ tabsHeight = 40px
       @media screen and (max-width: 480px)
         border-radius 0
 
-    &.auth0-lock-iphone
-      .auth0-lock-body-content
-        //mobile view
-        @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % (headerHeight + submitHeight + iphoneBar)
-
-    &.auth0-lock-no-submit
-      .auth0-lock-body-content
-        //mobile view
-        @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % headerHeight
-
-      &.auth0-lock-iphone
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s)" % (headerHeight + iphoneBar)
-
     &.auth0-lock-with-terms
       .auth0-lock-body-content
         //mobile view
@@ -1048,23 +1031,9 @@ tabsHeight = 40px
       .auth0-lock-body-content
         //mobile view
         @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % (headerHeight + submitHeight + tabsHeight)
           padding-top 40px
 
-      &.auth0-lock-with-terms
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s - 42px)" % (headerHeight + submitHeight + tabsHeight) // - header - submit - tabs - terms
-
-      &.auth0-lock-iphone
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s)" % (headerHeight + submitHeight + tabsHeight + iphoneBar)
-
   // Opened in frame
-
 
   &.auth0-lock-opened-in-frame
     opacity 1
@@ -1115,9 +1084,6 @@ tabsHeight = 40px
 // database mode
 
 .auth0-lock.auth0-lock
-  .auth0-lock-tabs-container
-    margin -20px -20px 20px
-    height tabsHeight
 
   .auth0-lock-tabs
     background white
@@ -1148,6 +1114,7 @@ tabsHeight = 40px
       margin 0
       text-align center
       cursor pointer
+      padding: 20px
 
       a, span
         padding 11px 10px

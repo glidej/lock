@@ -60,10 +60,12 @@ class SubmitButton extends React.Component {
         type="submit"
         aria-label={label ? label : 'Submit'}
       >
-        <div className="auth0-loading-container">
-          <div className="auth0-loading" />
+        <div className="auth0-lock-submit-container">
+          <div className="auth0-loading-container">
+            <div className="auth0-loading" />
+          </div>
+          {content}
         </div>
-        {content}
       </button>
     );
   }
